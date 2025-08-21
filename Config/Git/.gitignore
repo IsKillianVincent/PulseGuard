@@ -1,0 +1,27 @@
+# Xcode
+DerivedData/
+build/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+# SwiftPM
+.build/
+.swiftpm/xcode/package.xcworkspace/xcuserdata/
+Package.resolved
+
+# Archives & symbols
+*.xcarchive
+*.ipa
+*.dSYM*
+*.dSYM.zip
+
+# CocoaPods / Carthage (si jamais)
+Pods/
+Carthage/Build/
+
+# Misc
+.DS_Store
+*.log
