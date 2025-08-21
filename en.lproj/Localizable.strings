@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  PulseGuard
+
+  Created by Killian VINCENT on 23/08/2025.
+  
+*/
+
+/* UI actions */
+"ui.scroll.toTop" = "Back to top";
+"ui.checkNow" = "Check now";
+"ui.silence" = "Mute";
+"ui.silence.30" = "Mute 30 min";
+"ui.silence.60" = "Mute 1 h";
+"ui.silence.120" = "Mute 2 h";
+"ui.unsilence" = "Unmute";
+"ui.preferences" = "Preferences…";
+"ui.quit" = "Quit";
+
+/* Sections */
+"section.battery" = "Battery";
+"section.batteryHealth" = "Battery Health";
+"section.processor" = "Processor";
+"section.memory" = "Memory";
+"section.network" = "Network";
+"section.system" = "System";
+"section.storage" = "Storage";
+
+/* Accessibility */
+"a11y.battery.level" = "Battery level";
+"a11y.cpu.core" = "CPU core";
+"a11y.memory.used" = "Memory used";
+"a11y.storage.used" = "Space used";
+
+"storage.used" = "Used";
+"storage.free" = "free";
+"a11y.storage.used" = "Used space";
+"cpu.total" = "Total CPU";
+"a11y.cpu.total" = "Total processor load";
+"memory.used" = "Memory used";
+"a11y.memory.used" = "Memory used";

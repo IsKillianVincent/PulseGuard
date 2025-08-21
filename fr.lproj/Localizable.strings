@@ -1,0 +1,35 @@
+/* 
+  Localizable.strings
+  PulseGuard
+
+  Created by Killian VINCENT on 23/08/2025.
+  
+*/
+
+/* UI actions */
+"ui.scroll.toTop" = "Revenir en haut";
+"ui.checkNow" = "Vérifier maintenant";
+"ui.silence" = "Silencer";
+"ui.silence.30" = "Silencer 30 min";
+"ui.silence.60" = "Silencer 1 h";
+"ui.silence.120" = "Silencer 2 h";
+"ui.unsilence" = "Réactiver";
+"ui.preferences" = "Préférences…";
+"ui.quit" = "Quitter";
+
+/* Sections */
+"section.battery" = "Batterie";
+"section.batteryHealth" = "État de la batterie";
+"section.processor" = "Processeur";
+"section.memory" = "Mémoire";
+"section.network" = "Réseau";
+"section.system" = "Système";
+"section.storage" = "Stockage";
+
+/* Accessibility */
+"a11y.battery.level" = "Niveau de batterie";
+"a11y.cpu.core" = "Cœur CPU";
+"a11y.memory.used" = "Mémoire utilisée";
+"a11y.storage.used" = "Espace utilisé";
+
+
