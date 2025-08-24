@@ -32,7 +32,6 @@
 "a11y.memory.used" = "Mémoire utilisée";
 "a11y.storage.used" = "Espace utilisé";
 
-
 "common.preferences" = "Préférences";
 
 /* Général */
@@ -47,7 +46,7 @@
 "prefs.battery.note"  = "Conseil visuel pour préserver la batterie.";
 
 /* Hystérésis — déclenchement des conseils */
-"prefs.hysteresis.title"  = "Déclenchement (hystérésis)";
+"prefs.hysteresis.title"  = "Déclenchement";
 "prefs.hysteresis.plug"   = "Seuil BRANCHER (≤)";
 "prefs.hysteresis.unplug" = "Seuil DÉBRANCHER (≥)";
 "prefs.hysteresis.note"   = "Ex. 30/70 évite les notifications ping-pong.";

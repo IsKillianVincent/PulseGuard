@@ -4,8 +4,7 @@
 //
 //  Created by Killian VINCENT on 23/08/2025.
 //
-// Settings/Preferences/ViewModel/PreferencesViewModel.swift
-// Settings/Preferences/ViewModel/PreferencesViewModel.swift
+
 import SwiftUI
 import Combine
 
@@ -17,9 +16,11 @@ final class PreferencesViewModel: ObservableObject {
     @Published var unplugThreshold: Int = 70
     @Published var pollInterval: Int = 60
     @Published var launchAtLogin: Bool = false
+    
 
     private let store: SettingsStore
     private var bag = Set<AnyCancellable>()
+    private var isNormalizing = false
 
     init(store: SettingsStore) {
         self.store = store
@@ -58,5 +59,28 @@ final class PreferencesViewModel: ObservableObject {
 
     func refreshLoginState() {
         store.refreshLaunchAtLoginFromSystem()
+    }
+    
+    func normalizeBatteryTargets(gap: Int = 5) {
+        guard !isNormalizing else { return }
+        isNormalizing = true
+    
+        lowerIdeal = min(max(lowerIdeal, 0), 95)
+        upperIdeal = min(max(upperIdeal, 5), 100)
+    
+        if lowerIdeal > upperIdeal - gap { lowerIdeal = max(0, upperIdeal - gap) }
+        if upperIdeal < lowerIdeal + gap { upperIdeal = min(100, lowerIdeal + gap) }
+        isNormalizing = false
+    }
+
+    func normalizeHysteresis() {
+        guard !isNormalizing else { return }
+        isNormalizing = true
+        plugThreshold = min(max(plugThreshold, 0), 99)
+        unplugThreshold = min(max(unplugThreshold, 1), 100)
+        if plugThreshold >= unplugThreshold {
+            unplugThreshold = min(100, plugThreshold + 1)
+        }
+        isNormalizing = false
     }
 }
