@@ -71,3 +71,14 @@
 "display.colorSpace" = "Espace colorométrique";
 
 
+
+"section.accessories" = "Accessoires";
+"accessories.none" = "Aucun accessoire détecté";
+"Oui" = "Oui";
+"Non" = "Non";
+"à l’instant" = "à l’instant";
+"Batterie" = "Batterie";
+"Liaison" = "Liaison";
+"Signal" = "Signal";
+"Connecté" = "Connecté";
+"Vu" = "Vu";

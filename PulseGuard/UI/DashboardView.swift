@@ -19,6 +19,7 @@ struct DashboardView: View {
     @ObservedObject var storageVM: StorageViewModel
     @ObservedObject var graphicsVM: GraphicsViewModel
     @ObservedObject var displaysVM: DisplaysViewModel
+    @ObservedObject var accessoriesVM: AccessoriesViewModel
 
     @Environment(\.openSettings) private var openSettings
 
@@ -34,6 +35,7 @@ struct DashboardView: View {
                 SystemCardView(vm: systemVM)
                 StorageCardView(vm: storageVM)
                 DisplaysCardView(vm: displaysVM)
+                AccessoriesCardView(vm: accessoriesVM)
 
                 HStack {
                     Button(String(localized: "ui.checkNow")) { batteryVM.forceCheck() }

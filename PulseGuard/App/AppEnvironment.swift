@@ -19,6 +19,7 @@ final class AppEnvironment: ObservableObject {
     let storageVM: StorageViewModel
     let graphicsVM: GraphicsViewModel
     let displaysVM: DisplaysViewModel
+    let accessoriesVM: AccessoriesViewModel
 
     init(settings: SettingsStore,
          batteryReader: BatteryReading,
@@ -30,7 +31,12 @@ final class AppEnvironment: ObservableObject {
          storageReader: StorageReading,
          systemReader: SystemReading = SystemReader(),
          graphicsReader: GPUReading = MetalGPUReader(),
-         displaysReader: DisplayReading = SystemDisplayReader()
+         displaysReader: DisplayReading = SystemDisplayReader(),
+         accessoriesReader: any AccessoryReading = CombinedAccessoryReader([
+                      IOBluetoothAccessoryReader(),
+                      BluetoothAccessoryReader(),
+                      IOKitAccessoryReader()
+                  ])
     ) {
         self.settings = settings
         self.batteryVM = BatteryViewModel(reader: batteryReader, notifier: notifier, settings: settings)
@@ -42,6 +48,7 @@ final class AppEnvironment: ObservableObject {
         self.storageVM = StorageViewModel(reader: storageReader)
         self.graphicsVM = GraphicsViewModel(reader: graphicsReader)
         self.displaysVM = DisplaysViewModel(reader: displaysReader)
+        self.accessoriesVM = AccessoriesViewModel(reader: accessoriesReader)
     }
 
     static func makeLive() -> AppEnvironment {
@@ -55,7 +62,12 @@ final class AppEnvironment: ObservableObject {
             netReader: NetworkReader(),
             storageReader: StorageReader(),
             graphicsReader: MetalGPUReader(),
-            displaysReader: SystemDisplayReader()
+            displaysReader: SystemDisplayReader(),
+            accessoriesReader: CombinedAccessoryReader([
+                IOBluetoothAccessoryReader(),
+                BluetoothAccessoryReader(),
+                IOKitAccessoryReader()
+            ])
         )
     }
 }
