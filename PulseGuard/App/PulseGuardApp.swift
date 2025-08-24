@@ -35,15 +35,15 @@ struct PulseGuardApp: App {
             }
             .onChange(of: env.settings.pollInterval) { _, v in
                 env.batteryVM.start(pollInterval: v)
-                env.cpuVM.start(pollInterval: 0.1)
-                env.memoryVM.start(pollInterval: 0.1)
+                env.cpuVM.start(pollInterval: v)
+                env.memoryVM.start(pollInterval: v)
             }
         } label: {
             MenuBarLabel(batteryVM: env.batteryVM)
         }
         .menuBarExtraStyle(.window)
 
-        Settings { PreferencesView(settings: env.settings) }
+        Settings { PreferencesView(vm: PreferencesViewModel(store: env.settings)) }
             .commands { AppCommands(vm: env.batteryVM, settings: env.settings) }
     }
 }

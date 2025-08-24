@@ -33,3 +33,25 @@
 "a11y.storage.used" = "Espace utilisé";
 
 
+"common.preferences" = "Préférences";
+
+/* Général */
+"prefs.general" = "Général";
+"prefs.launchAtLogin" = "Lancer au démarrage";
+"prefs.launchAtLogin.help" = "Ajoute PulseGuard aux éléments d’ouverture de session.";
+
+/* Batterie — objectifs visuels */
+"prefs.battery.title" = "Objectif batterie";
+"prefs.battery.lower" = "Plancher idéal";
+"prefs.battery.upper" = "Plafond idéal";
+"prefs.battery.note"  = "Conseil visuel pour préserver la batterie.";
+
+/* Hystérésis — déclenchement des conseils */
+"prefs.hysteresis.title"  = "Déclenchement (hystérésis)";
+"prefs.hysteresis.plug"   = "Seuil BRANCHER (≤)";
+"prefs.hysteresis.unplug" = "Seuil DÉBRANCHER (≥)";
+"prefs.hysteresis.note"   = "Ex. 30/70 évite les notifications ping-pong.";
+
+/* Fréquence de vérification */
+"prefs.poll.title"    = "Fréquence de vérification";
+"prefs.poll.interval" = "Intervalle (s)";

@@ -5,16 +5,16 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
 import SwiftUI
 
 struct AppCommands: Commands {
+    @Environment(\.openSettings) private var openSettings
     @ObservedObject var vm: BatteryViewModel
     @ObservedObject var settings: SettingsStore
 
     var body: some Commands {
         CommandMenu("PulseGuard") {
-            Button("Préférences…") { SettingsWindow.shared.show(settings: settings) }
+            Button("Préférences…") { openSettings() }
                 .keyboardShortcut(",", modifiers: .command)
 
             Button("Vérifier maintenant") { vm.forceCheck() }

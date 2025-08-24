@@ -18,6 +18,8 @@ struct DashboardView: View {
     @ObservedObject var systemVM: SystemViewModel
     @ObservedObject var storageVM: StorageViewModel
 
+    @Environment(\.openSettings) private var openSettings
+
     var body: some View {
         ScrollView {
             VStack(spacing: Theme.spacing) {
@@ -30,22 +32,23 @@ struct DashboardView: View {
                 StorageCardView(vm: storageVM)
 
                 HStack {
-                    Button("Vérifier maintenant") { batteryVM.forceCheck() }
+                    Button(String(localized: "ui.checkNow")) { batteryVM.forceCheck() }
                     Spacer()
                     Menu {
-                        Button("Silencer 30 min", systemImage: "bell.slash") { batteryVM.silence(for: 30 * 60) }
-                        Button("Silencer 1 h",   systemImage: "bell.slash") { batteryVM.silence(for: 60 * 60) }
-                        Button("Silencer 2 h",   systemImage: "bell.slash") { batteryVM.silence(for: 120 * 60) }
+                        Button(String(localized: "ui.silence.30"), systemImage: "bell.slash") { batteryVM.silence(for: 30*60) }
+                        Button(String(localized: "ui.silence.60"), systemImage: "bell.slash") { batteryVM.silence(for: 60*60) }
+                        Button(String(localized: "ui.silence.120"), systemImage: "bell.slash") { batteryVM.silence(for: 120*60) }
                         if batteryVM.isSilenced {
                             Divider()
-                            Button("Réactiver", systemImage: "bell") { batteryVM.cancelSilence() }
+                            Button(String(localized: "ui.unsilence"), systemImage: "bell") { batteryVM.cancelSilence() }
                         }
                     } label: {
-                        Label(batteryVM.isSilenced ? (batteryVM.silenceRemainingDescription ?? "Silence") : "Silencer",
+                        Label(batteryVM.isSilenced ? (batteryVM.silenceRemainingDescription ?? "Silence")
+                                                   : String(localized: "ui.silence"),
                               systemImage: batteryVM.isSilenced ? "bell.slash" : "bell")
                     }
-                    Button("Préférences…") { SettingsWindow.shared.show(settings: settings) }
-                    Button("Quitter") { NSApplication.shared.terminate(nil) }
+                    Button(String(localized: "ui.preferences")) { openSettings() }
+                    Button(String(localized: "ui.quit")) { NSApplication.shared.terminate(nil) }
                 }
                 .font(.callout)
             }

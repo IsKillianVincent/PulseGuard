@@ -39,3 +39,27 @@
 "a11y.cpu.total" = "Total processor load";
 "memory.used" = "Memory used";
 "a11y.memory.used" = "Memory used";
+
+
+"common.preferences" = "Preferences";
+
+/* General */
+"prefs.general" = "General";
+"prefs.launchAtLogin" = "Launch at login";
+"prefs.launchAtLogin.help" = "Adds PulseGuard to your login items.";
+
+/* Battery — visual goals */
+"prefs.battery.title" = "Battery target";
+"prefs.battery.lower" = "Lower bound";
+"prefs.battery.upper" = "Upper bound";
+"prefs.battery.note"  = "Visual guidance to preserve battery health.";
+
+/* Hysteresis — advice thresholds */
+"prefs.hysteresis.title"  = "Advice thresholds (hysteresis)";
+"prefs.hysteresis.plug"   = "PLUG threshold (≤)";
+"prefs.hysteresis.unplug" = "UNPLUG threshold (≥)";
+"prefs.hysteresis.note"   = "E.g. 30/70 prevents ping-pong notifications.";
+
+/* Polling */
+"prefs.poll.title"    = "Polling frequency";
+"prefs.poll.interval" = "Interval (s)";

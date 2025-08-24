@@ -25,7 +25,6 @@ struct MenuBarLabel: View {
                     .animation(.easeInOut(duration: 0.9).repeatForever(autoreverses: true),
                                value: batteryVM.shouldPulse)
             }
-            Text(batteryVM.menuTitleShort).monospacedDigit()
         }
     }
 }

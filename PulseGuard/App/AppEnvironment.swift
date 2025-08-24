@@ -28,14 +28,14 @@ final class AppEnvironment: ObservableObject {
          storageReader: StorageReading,
          systemReader: SystemReading = SystemReader()
     ) {
-        self.settings        = settings
-        self.batteryVM       = BatteryViewModel(reader: batteryReader, notifier: notifier, settings: settings)
-        self.cpuVM           = CPUViewModel(reader: cpuReader)
-        self.memoryVM        = MemoryViewModel(reader: memReader)
+        self.settings = settings
+        self.batteryVM = BatteryViewModel(reader: batteryReader, notifier: notifier, settings: settings)
+        self.cpuVM = CPUViewModel(reader: cpuReader)
+        self.memoryVM = MemoryViewModel(reader: memReader)
         self.batteryHealthVM = BatteryHealthViewModel(reader: bhReader)
-        self.networkVM       = NetworkViewModel(reader: netReader)
-        self.systemVM        = SystemViewModel(reader: systemReader)
-        self.storageVM       = StorageViewModel(reader: storageReader)
+        self.networkVM = NetworkViewModel(reader: netReader)
+        self.systemVM = SystemViewModel(reader: systemReader)
+        self.storageVM = StorageViewModel(reader: storageReader)
     }
 
     static func makeLive() -> AppEnvironment {
