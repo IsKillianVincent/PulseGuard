@@ -24,10 +24,12 @@ struct PulseGuardApp: App {
                 storageVM: env.storageVM,
                 graphicsVM: env.graphicsVM,
                 displaysVM: env.displaysVM,
-                accessoriesVM: env.accessoriesVM
-
+                accessoriesVM: env.accessoriesVM,
+                powerVM: env.powerVM,
+                connectivityVM: env.connectivityVM
             )
             .onAppear {
+                LocationAuthorizer.shared.ensureAuthorized()
                 env.batteryVM.start(pollInterval: env.settings.pollInterval)
                 env.cpuVM.start(pollInterval: 0.1)
                 env.memoryVM.start(pollInterval: 0.1)
@@ -38,6 +40,8 @@ struct PulseGuardApp: App {
                 env.graphicsVM.start(pollInterval: 1.0)
                 env.displaysVM.start(pollInterval: 2.0)
                 env.accessoriesVM.start(pollInterval: 30.0)
+                env.connectivityVM.start(pollInterval: 1.0)
+                env.powerVM.start(pollInterval: 4.0)
             }
             .onChange(of: env.settings.pollInterval) { _, v in
                 env.batteryVM.start(pollInterval: v)
