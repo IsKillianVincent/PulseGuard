@@ -31,7 +31,6 @@ final class StorageReader: StorageReading {
                   let totalAny = rv.volumeTotalCapacity
             else { continue }
 
-            // ➜ Normalisation en Int64 (évite le conflit Int?/Int64?)
             let total = Int64(totalAny)
 
             let free: Int64
@@ -53,7 +52,6 @@ final class StorageReader: StorageReading {
             )
         }
 
-        // ➜ Tri: internes d’abord, puis nom (A→Z)
         items.sort {
             if $0.isInternal != $1.isInternal { return $0.isInternal && !$1.isInternal }
             return $0.name.localizedCaseInsensitiveCompare($1.name) == .orderedAscending

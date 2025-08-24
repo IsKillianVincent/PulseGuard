@@ -5,20 +5,16 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
 import SwiftUI
 import AppKit
 
-// ---- Suivi d’offset via PreferenceKey
 struct ScrollOffsetKey: PreferenceKey {
     static var defaultValue: CGFloat = 0
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = nextValue() }
 }
 
-// Marqueur pour scroller en haut
 private struct ScrollTopAnchor: View { var body: some View { Color.clear.frame(height: 0).id("__TOP__") } }
 
-// ---- Active l’élasticité (rubber-banding) sur le NSScrollView parent
 struct EnableElasticScroll: NSViewRepresentable {
     func makeNSView(context: Context) -> NSView {
         let v = NSView()

@@ -5,7 +5,6 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
 import Foundation
 import SwiftUI
 
@@ -33,7 +32,6 @@ final class BatteryViewModel: ObservableObject {
         self.settings = settings
     }
 
-    // MARK: - Cycle
     func start(pollInterval: TimeInterval) {
         notifier.requestAuth { _ in }
         timer?.invalidate()
@@ -46,7 +44,6 @@ final class BatteryViewModel: ObservableObject {
     func stop() { timer?.invalidate(); timer = nil }
     func forceCheck() { tick() }
 
-    // MARK: - Logic
     private func tick() {
         guard let s = reader.read() else { return }
         status = s
@@ -70,7 +67,6 @@ final class BatteryViewModel: ObservableObject {
         }
     }
 
-    // Silence
     var isSilenced: Bool { (silenceUntil ?? .distantPast) > Date() }
     func silence(for duration: TimeInterval) { silenceUntil = Date().addingTimeInterval(duration) }
     func cancelSilence() { silenceUntil = nil }
@@ -80,7 +76,6 @@ final class BatteryViewModel: ObservableObject {
         return m >= 60 ? String(format: "%dh%02d", m/60, m%60) : "\(max(m,1)) min"
     }
 
-    // UI helpers
     var shouldPulse: Bool { isSilenced ? false : (status?.isCharging == true || currentAdvice != .keepAsIs) }
     var menuTitleShort: String { status.map { "\($0.levelPercent)%" } ?? "—" }
     var menuTint: Color {

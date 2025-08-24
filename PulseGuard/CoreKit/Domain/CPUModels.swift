@@ -8,9 +8,9 @@
 import Foundation
 
 struct CPUCoreLoad: Equatable {
-    let user: Double   // 0...1
-    let system: Double // 0...1
-    let idle: Double   // 0...1
+    let user: Double
+    let system: Double
+    let idle: Double
     var total: Double { user + system }
 }
 

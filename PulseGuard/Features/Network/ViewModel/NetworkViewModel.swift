@@ -12,13 +12,12 @@ import SwiftUI
 @MainActor
 final class NetworkViewModel: ObservableObject {
     @Published var snapshot: NetworkSnapshot? = nil
-    @Published var history: [HistoryPoint] = []   // Down en % de l’échelle dynamique
+    @Published var history: [HistoryPoint] = []
 
     private let reader: NetworkReading
     private var timer: Timer?
 
-    // Échelle auto pour la sparkline (paliers 1, 10, 100, 1000 KB/s…)
-    private var scale: Double = 1024 // 1 KB/s
+    private var scale: Double = 1024
 
     init(reader: NetworkReading) { self.reader = reader }
 
@@ -36,7 +35,6 @@ final class NetworkViewModel: ObservableObject {
         guard let s = reader.sample() else { return }
         snapshot = s
 
-        // échelle dynamique ~*10 quand on dépasse 85 %
         let downKBs = s.downBps / 1024.0
         while downKBs > scale * 0.85 { scale *= 10 }
         while downKBs < scale * 0.085 && scale > 1024 { scale /= 10 }
@@ -46,7 +44,6 @@ final class NetworkViewModel: ObservableObject {
         if history.count > 300 { history.removeFirst(history.count - 300) }
     }
 
-    // MARK: - Formats
     var upText: String  { formatRate(snapshot?.upBps ?? 0) }
     var downText: String{ formatRate(snapshot?.downBps ?? 0) }
     var ifaceText: String {

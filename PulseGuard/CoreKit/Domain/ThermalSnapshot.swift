@@ -5,14 +5,13 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
 import Foundation
 import SwiftUI
 
 struct ThermalSnapshot: Equatable {
     let date: Date
     let state: ProcessInfo.ThermalState
-    let uptime: TimeInterval   // secondes depuis boot
+    let uptime: TimeInterval
 
     var stateText: String {
         switch state {

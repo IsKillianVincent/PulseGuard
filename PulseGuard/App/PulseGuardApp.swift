@@ -21,7 +21,9 @@ struct PulseGuardApp: App {
                 batteryHealthVM: env.batteryHealthVM,
                 networkVM: env.networkVM,
                 systemVM: env.systemVM,
-                storageVM: env.storageVM
+                storageVM: env.storageVM,
+                graphicsVM: env.graphicsVM,
+                displaysVM: env.displaysVM
 
             )
             .onAppear {
@@ -32,6 +34,8 @@ struct PulseGuardApp: App {
                 env.networkVM.start(pollInterval: 0.1)
                 env.systemVM.start()
                 env.storageVM.start(pollInterval: 30)
+                env.graphicsVM.start(pollInterval: 1.0)
+                env.displaysVM.start(pollInterval: 2.0)
             }
             .onChange(of: env.settings.pollInterval) { _, v in
                 env.batteryVM.start(pollInterval: v)

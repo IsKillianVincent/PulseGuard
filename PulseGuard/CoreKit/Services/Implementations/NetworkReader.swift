@@ -5,7 +5,6 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
 import Foundation
 
 final class NetworkReader: NetworkReading {
@@ -34,7 +33,6 @@ final class NetworkReader: NetworkReading {
                 tx &+= UInt64(data.ifi_obytes)
             }
 
-            // first IPv4 seen becomes "primary"
             if primaryIP == nil, ifa.ifa_addr.pointee.sa_family == UInt8(AF_INET) {
                 var addr = [CChar](repeating: 0, count: Int(NI_MAXHOST))
                 getnameinfo(ifa.ifa_addr, socklen_t(ifa.ifa_addr.pointee.sa_len),

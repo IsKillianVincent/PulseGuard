@@ -5,7 +5,6 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
 import Foundation
 
 struct BatteryHealth: Equatable {
@@ -15,7 +14,7 @@ struct BatteryHealth: Equatable {
     let maxCapacitymAh: Int
     let onACPower: Bool
     let isCharging: Bool
-    let temperatureC: Double?   // nil si non exposé
+    let temperatureC: Double?
 
     var healthRatio: Double {
         guard designCapacitymAh > 0 else { return 0 }

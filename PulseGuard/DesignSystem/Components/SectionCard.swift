@@ -5,7 +5,6 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
 import SwiftUI
 
 struct SectionCard<Content: View, Trailing: View>: View {
@@ -33,7 +32,7 @@ struct SectionCard<Content: View, Trailing: View>: View {
             RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
                 .stroke(Theme.stroke, lineWidth: 1)
         )
-        .overlay( // liseré dégradé subtil
+        .overlay(
             RoundedRectangle(cornerRadius: Theme.radius, style: .continuous)
                 .stroke(LinearGradient(colors: [accent.opacity(0.45), .clear],
                                        startPoint: .topLeading, endPoint: .bottomTrailing),

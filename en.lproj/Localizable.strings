@@ -63,3 +63,11 @@
 /* Polling */
 "prefs.poll.title"    = "Polling frequency";
 "prefs.poll.interval" = "Interval (s)";
+
+"section.displays" = "Écrans";
+"display.main" = "Principal";
+"display.resolution" = "Résolution";
+"display.refresh" = "Fréquence";
+"display.colorSpace" = "Espace colorométrique";
+
+

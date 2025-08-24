@@ -5,7 +5,6 @@
 //  Created by Killian VINCENT on 23/08/2025.
 //
 
-
 import Foundation
 
 final class UserDefaultsSettingsRepository: SettingsPersisting {

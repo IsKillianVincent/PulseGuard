@@ -5,12 +5,6 @@
 //  Created by Killian VINCENT on 22/08/2025.
 //
 
-
-//
-//  MachCPUReader.swift
-//  PulseGuard
-//
-
 import Foundation
 import Darwin
 
@@ -30,12 +24,10 @@ final class MachCPUReader: CPUReading {
                                      &numCPUInfo)
         guard kr == KERN_SUCCESS, let cpuInfo else { return nil }
         defer {
-            // libère le buffer alloué par host_processor_info
             let sz = vm_size_t(numCPUInfo) * vm_size_t(MemoryLayout<integer_t>.size)
             vm_deallocate(mach_task_self_, vm_address_t(bitPattern: cpuInfo), sz)
         }
 
-        // Lecture des ticks par cœur (USER / NICE / SYSTEM / IDLE)
         let cpuCount = Int(numCPUs)
         let stride = Int(CPU_STATE_MAX)
         var times: [CoreTimes] = []
@@ -50,7 +42,6 @@ final class MachCPUReader: CPUReading {
             times.append(CoreTimes(user: user &+ nice, system: sys, idle: idle, nice: nice))
         }
 
-        // Première mesure : impossible de calculer des deltas → 0 %
         guard !last.isEmpty, last.count == times.count else {
             last = times
             let zeros = Array(repeating: CPUCoreLoad(user: 0, system: 0, idle: 1), count: times.count)
@@ -70,7 +61,7 @@ final class MachCPUReader: CPUReading {
             let du = Double(c.user  &- p.user)
             let ds = Double(c.system &- p.system)
             let di = Double(c.idle   &- p.idle)
-            let sum = max(du + ds + di, 1) // évite /0
+            let sum = max(du + ds + di, 1)
             perCore.append(CPUCoreLoad(user: du / sum, system: ds / sum, idle: di / sum))
             totUser += du; totSys += ds; totIdle += di
         }

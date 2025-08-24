@@ -17,6 +17,8 @@ struct DashboardView: View {
     @ObservedObject var networkVM: NetworkViewModel
     @ObservedObject var systemVM: SystemViewModel
     @ObservedObject var storageVM: StorageViewModel
+    @ObservedObject var graphicsVM: GraphicsViewModel
+    @ObservedObject var displaysVM: DisplaysViewModel
 
     @Environment(\.openSettings) private var openSettings
 
@@ -27,9 +29,11 @@ struct DashboardView: View {
                 BatteryHealthCardView(vm: batteryHealthVM)
                 ProcessorCardView(vm: cpuVM)
                 MemoryCardView(vm: memoryVM)
+                GraphicsCardView(vm: graphicsVM)
                 NetworkCardView(vm: networkVM)
                 SystemCardView(vm: systemVM)
                 StorageCardView(vm: storageVM)
+                DisplaysCardView(vm: displaysVM)
 
                 HStack {
                     Button(String(localized: "ui.checkNow")) { batteryVM.forceCheck() }

@@ -54,3 +54,9 @@
 /* Fréquence de vérification */
 "prefs.poll.title"    = "Fréquence de vérification";
 "prefs.poll.interval" = "Intervalle (s)";
+
+"section.displays" = "Écrans";
+"display.main" = "Principal";
+"display.resolution" = "Résolution";
+"display.refresh" = "Fréquence";
+"display.colorSpace" = "Espace colorométrique";

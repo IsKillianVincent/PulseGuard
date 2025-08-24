@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgressRing: View {
-    let progress: Double  // 0...1
+    let progress: Double
     let tint: Color
     let isPulsing: Bool
 
@@ -16,7 +16,6 @@ struct ProgressRing: View {
         ZStack {
             Circle().strokeBorder(.quaternary, lineWidth: 7)
 
-            // Anneau dégradé + léger glow
             Canvas { ctx, size in
                 let rect = CGRect(origin: .zero, size: size).insetBy(dx: 3.5, dy: 3.5)
                 var path = Path()
@@ -30,7 +29,6 @@ struct ProgressRing: View {
             }
             .shadow(color: tint.opacity(0.35), radius: 4)
 
-            // Icône centrale
             if #available(macOS 14.0, *) {
                 Image(systemName: "waveform.path.ecg")
                     .symbolRenderingMode(.hierarchical)

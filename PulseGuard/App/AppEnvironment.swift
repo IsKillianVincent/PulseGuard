@@ -17,6 +17,8 @@ final class AppEnvironment: ObservableObject {
     let networkVM: NetworkViewModel
     let systemVM: SystemViewModel
     let storageVM: StorageViewModel
+    let graphicsVM: GraphicsViewModel
+    let displaysVM: DisplaysViewModel
 
     init(settings: SettingsStore,
          batteryReader: BatteryReading,
@@ -26,7 +28,9 @@ final class AppEnvironment: ObservableObject {
          bhReader: BatteryHealthReading,
          netReader: NetworkReading,
          storageReader: StorageReading,
-         systemReader: SystemReading = SystemReader()
+         systemReader: SystemReading = SystemReader(),
+         graphicsReader: GPUReading = MetalGPUReader(),
+         displaysReader: DisplayReading = SystemDisplayReader()
     ) {
         self.settings = settings
         self.batteryVM = BatteryViewModel(reader: batteryReader, notifier: notifier, settings: settings)
@@ -36,6 +40,8 @@ final class AppEnvironment: ObservableObject {
         self.networkVM = NetworkViewModel(reader: netReader)
         self.systemVM = SystemViewModel(reader: systemReader)
         self.storageVM = StorageViewModel(reader: storageReader)
+        self.graphicsVM = GraphicsViewModel(reader: graphicsReader)
+        self.displaysVM = DisplaysViewModel(reader: displaysReader)
     }
 
     static func makeLive() -> AppEnvironment {
@@ -47,7 +53,9 @@ final class AppEnvironment: ObservableObject {
             memReader: HostMemoryReader(),
             bhReader: IOKitBatteryHealthReader(),
             netReader: NetworkReader(),
-            storageReader: StorageReader()
+            storageReader: StorageReader(),
+            graphicsReader: MetalGPUReader(),
+            displaysReader: SystemDisplayReader()
         )
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct BatteryStatus: Equatable {
-    let levelPercent: Int   // 0...100
+    let levelPercent: Int
     let isCharging: Bool
     let onACPower: Bool
 }
