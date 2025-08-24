@@ -48,13 +48,19 @@ final class PreferencesViewModel: ObservableObject {
             DispatchQueue.main.async { store?.unplugThreshold = v }
         }.store(in: &bag)
 
-        $pollInterval.removeDuplicates().sink { [weak store] v in
-            DispatchQueue.main.async { store?.pollInterval = TimeInterval(v) }
-        }.store(in: &bag)
+        $pollInterval
+            .map { min(max($0, 10), 600) }
+            .removeDuplicates()
+            .sink { [weak store] v in
+                DispatchQueue.main.async { store?.pollInterval = TimeInterval(v) }
+            }.store(in: &bag)
 
         $launchAtLogin.removeDuplicates().sink { [weak store] v in
             DispatchQueue.main.async { store?.launchAtLogin = v }
         }.store(in: &bag)
+        
+        normalizeBatteryTargets()
+        normalizeHysteresis()
     }
 
     func refreshLoginState() {

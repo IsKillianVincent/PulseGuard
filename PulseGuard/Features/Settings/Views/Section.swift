@@ -65,6 +65,8 @@ struct HysteresisSection: View {
             .onChange(of: vm.lowerIdeal) { _, _ in vm.normalizeHysteresis() }
             .onChange(of: vm.upperIdeal) { _, _ in vm.normalizeHysteresis() }
         }
+        .onChange(of: vm.lowerIdeal) { _, _ in vm.normalizeHysteresis() }
+        .onChange(of: vm.upperIdeal) { _, _ in vm.normalizeHysteresis() }
     }
 }
 
